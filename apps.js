@@ -17,6 +17,8 @@ document.getElementById("containNum").addEventListener("click",function(event){
    if(isNaN(digit)){
      if(digit==="C"){
         displayNum.value='';
+    }else if(digit==="<"){
+        displayNum.value=displayNum.value.slice(0,-1);
     }
    }
     else{
@@ -24,15 +26,26 @@ document.getElementById("containNum").addEventListener("click",function(event){
     }
 })
 
-
 function verify(){
     const pin=document.getElementById("showPin").value;
     const typedNumber=document.getElementById("typedNumber").value
     const failMsg=document.getElementById("failMsg");
     const successMsg=document.getElementById("successMsg");
-    if(pin==typedNumber){
-        successMsg.style.display="block";
-    }else{
-        failMsg.style.display="block"
+
+    var value = parseInt(document.getElementById('try').value, 10);
+    value = isNaN(value) ? 3 : value;
+        if(pin==typedNumber){
+            successMsg.style.display="block";
+        }else if(value<=3 && value>0){
+             if(pin!=typedNumber){
+                failMsg.style.display="block";
+                value--;
+                // document.getElementById('try').value = value;
+                document.getElementById("try").innerHTML=value+" try left";
+                // console.log(value);
+            }
+        }else if(value==0){
+            document.querySelector(".submit-btn").disabled=true;
+        }
+        
     }
-}
