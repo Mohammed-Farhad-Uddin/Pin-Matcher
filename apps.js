@@ -32,21 +32,21 @@ function verify(){
     const failMsg=document.getElementById("failMsg");
     const successMsg=document.getElementById("successMsg");
 
-    var value = parseInt(document.getElementById('try').value);
-    value = isNaN(value) ? 3 : value;
+    var tryMsg = parseInt(document.getElementById('try').value);
+    tryMsg = isNaN(tryMsg) ? 3 : tryMsg;
         if(pin==typedNumber){
             successMsg.style.display="block";
             failMsg.style.display="none";
-        }else if(value<=3 && value>0){
+        }else if(tryMsg<=3 && tryMsg>0){
              if(pin!=typedNumber){
                 successMsg.style.display="none";
                 failMsg.style.display="block";
-                value--;
-                document.getElementById('try').value = value;
-                document.getElementById("try").innerHTML=value+" try left";
+                tryMsg--;
+                document.getElementById('try').value = tryMsg;
+                document.getElementById("try").innerHTML=tryMsg+" try left";
                 // console.log(value);
             }
-        }else if(value==0){
+        }else if(tryMsg==0){
             document.querySelector(".submit-btn").disabled=true;
         }
         
