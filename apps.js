@@ -32,12 +32,14 @@ function verify(){
     const failMsg=document.getElementById("failMsg");
     const successMsg=document.getElementById("successMsg");
 
-    var value = parseInt(document.getElementById('try').value, 10);
+    var value = parseInt(document.getElementById('try').value);
     value = isNaN(value) ? 3 : value;
         if(pin==typedNumber){
             successMsg.style.display="block";
+            failMsg.style.display="none";
         }else if(value<=3 && value>0){
              if(pin!=typedNumber){
+                successMsg.style.display="none";
                 failMsg.style.display="block";
                 value--;
                 document.getElementById('try').value = value;
