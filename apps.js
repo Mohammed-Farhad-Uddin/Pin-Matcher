@@ -40,7 +40,7 @@ function verify(){
              if(pin!=typedNumber){
                 failMsg.style.display="block";
                 value--;
-                // document.getElementById('try').value = value;
+                document.getElementById('try').value = value;
                 document.getElementById("try").innerHTML=value+" try left";
                 // console.log(value);
             }
